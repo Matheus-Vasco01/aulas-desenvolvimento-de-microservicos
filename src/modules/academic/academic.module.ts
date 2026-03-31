@@ -4,6 +4,6 @@ import { TeachersModule } from "@academic/teachers/teachers.module";
 import { Module } from "@nestjs/common";
 
 @Module({
-  imports: [StudentsModule, TeachersModule, SubjectsModule],
+  imports: [StudentsModule, SubjectsModule, TeachersModule],
 })
 export class AcademicModule {}

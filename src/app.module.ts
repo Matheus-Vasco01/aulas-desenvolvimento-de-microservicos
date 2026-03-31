@@ -12,12 +12,12 @@ import { SharedModule } from "@shared/shared.module";
   imports: [
     ConfigModule.forRoot(),
     SharedModule,
-    // UsersModule,
-    // AuthModule,
     AcademicModule,
+    // AttendanceModule,
     // ClassOfferingModule,
     // EnrollmentModule,
-    // AttendanceModule,
+    // UsersModule,
+    // AuthModule,
   ],
 })
 export class AppModule {}

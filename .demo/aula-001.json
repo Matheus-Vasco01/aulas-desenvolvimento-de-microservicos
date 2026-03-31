@@ -14,7 +14,7 @@
     },
     {
       "id": "demo-mmi65k3e-xt2a",
-      "title": "Instalação das dependências drizzle",
+      "title": "Criação do projeto nest vazio",
       "steps": [
         {
           "action": "focusTerminal",
@@ -22,7 +22,7 @@
         },
         {
           "action": "typeText",
-          "content": "npm install drizzle-orm pg"
+          "content": "npx @nestjs/cli new . --skip-git"
         }
       ]
     },
