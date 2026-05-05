@@ -6,6 +6,7 @@ import { AcademicModule } from "@academic/academic.module";
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 import { SharedModule } from "@shared/shared.module";
+import { MessagingModule } from "@messaging/messaging.module";
 // import { UsersModule } from "@users/users.module";
 
 @Module({
@@ -13,6 +14,7 @@ import { SharedModule } from "@shared/shared.module";
     ConfigModule.forRoot(),
     SharedModule,
     AcademicModule,
+    MessagingModule,
     // AttendanceModule,
     // ClassOfferingModule,
     // EnrollmentModule,
