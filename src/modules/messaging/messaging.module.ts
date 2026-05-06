@@ -8,5 +8,6 @@ import { RabbitMQService } from "./infra/rabbitmq/rabbitmq.service";
   imports: [ConfigModule],
   controllers: [MessagingController],
   providers: [RabbitMQService, MessagingService],
+  exports: [MessagingService],
 })
 export class MessagingModule {}

@@ -4,9 +4,10 @@ import { TeachersController } from "@academic/teachers/infra/controllers/teacher
 import { DrizzleTeacherRepository } from "@academic/teachers/infra/repositories/drizzle-teacher.repository";
 import { Module } from "@nestjs/common";
 import { SharedModule } from "@shared/shared.module";
+import { MessagingModule } from "@messaging/messaging.module";
 
 @Module({
-  imports: [SharedModule],
+  imports: [SharedModule, MessagingModule],
   controllers: [TeachersController],
   providers: [
     TeacherService,

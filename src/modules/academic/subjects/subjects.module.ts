@@ -4,9 +4,10 @@ import { SubjectsController } from "@academic/subjects/infra/controllers/subject
 import { DrizzleSubjectRepository } from "@academic/subjects/infra/repositories/drizzle-subject.repository";
 import { Module } from "@nestjs/common";
 import { SharedModule } from "@shared/shared.module";
+import { MessagingModule } from "@messaging/messaging.module";
 
 @Module({
-  imports: [SharedModule],
+  imports: [SharedModule, MessagingModule],
   controllers: [SubjectsController],
   providers: [
     SubjectService,

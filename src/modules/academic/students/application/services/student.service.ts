@@ -13,12 +13,14 @@ import {
   NotFoundException,
 } from "@nestjs/common";
 import type { PaginatedResult, PaginationParams } from "@shared/infra/hateoas";
+import { MessagingService } from "@messaging/application/services/messaging.service";
 
 @Injectable()
 export class StudentService {
   constructor(
     @Inject(STUDENT_REPOSITORY)
     private readonly studentRepository: StudentRepository,
+    private readonly messagingService: MessagingService,
   ) {}
 
   async create(dto: CreateStudentDto): Promise<void> {
@@ -30,6 +32,12 @@ export class StudentService {
 
     const student = Student.restore(dto);
     await this.studentRepository.create(student!);
+
+    await this.messagingService.publish(
+      { content: JSON.stringify(student) },
+      "academic.students.created.exchange",
+      "student.created",
+    );
   }
 
   async edit(id: string, dto: UpdateStudentDto): Promise<void> {
@@ -51,10 +59,22 @@ export class StudentService {
     if (dto.email) student.withEmail(dto.email);
     if (dto.document) student.withDocument(dto.document);
     await this.studentRepository.update(student!);
+
+    await this.messagingService.publish(
+      { content: JSON.stringify(student) },
+      "academic.students.updated.exchange",
+      "student.updated",
+    );
   }
 
   async remove(id: string): Promise<void> {
     await this.studentRepository.delete(id);
+
+    await this.messagingService.publish(
+      { content: JSON.stringify({ id }) },
+      "academic.students.deleted.exchange",
+      "student.deleted",
+    );
   }
 
   async list(): Promise<StudentDto[]> {
